@@ -17,7 +17,8 @@ endif()
 # 2) Static library
 # -----------------------------
 if(ENET_STATIC)
-    add_library(enet_static STATIC test/library.c)
+    add_library(enet_static STATIC test/library.c
+            test/enet_test_times.c)
 
     if(WIN32)
         target_link_libraries(enet_static PUBLIC winmm ws2_32)
@@ -89,6 +90,9 @@ if(ENET_TEST)
     target_link_libraries(enet_test_extra_peers PRIVATE enet_test_interface)
     target_compile_definitions(enet_test_extra_peers PRIVATE ENET_USE_MORE_PEERS)
 
+    # Test unit
+    add_executable(enet_test_unit test/enet_test_main.c)
+    target_link_libraries(enet_test_unit PRIVATE enet_test_interface)
 endif()
 
 # -----------------------------
