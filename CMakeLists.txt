@@ -17,8 +17,7 @@ endif()
 # 2) Static library
 # -----------------------------
 if(ENET_STATIC)
-    add_library(enet_static STATIC test/library.c
-            test/enet_test_times.c)
+    add_library(enet_static STATIC test/library.c)
 
     if(WIN32)
         target_link_libraries(enet_static PUBLIC winmm ws2_32)
@@ -91,8 +90,12 @@ if(ENET_TEST)
     target_compile_definitions(enet_test_extra_peers PRIVATE ENET_USE_MORE_PEERS)
 
     # Test unit
-    add_executable(enet_test_unit test/enet_test_main.c)
+    add_executable(enet_test_unit test/units/main.c)
     target_link_libraries(enet_test_unit PRIVATE enet_test_interface)
+    target_include_directories(enet_test_unit INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/test/units/include
+    )
 endif()
 
 # -----------------------------
