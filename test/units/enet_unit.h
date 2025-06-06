@@ -21,8 +21,13 @@ typedef struct _ENetTestEntry {
 
 #define MAX_TESTS 8096
 
-static ENetTestEntry enet_test_entries[MAX_TESTS];
-static int enet_test_count = 0;
+#ifdef ENET_UNIT_IMPL
+ENetTestEntry enet_test_entries[MAX_TESTS];
+int enet_test_count = 0;
+#else
+extern ENetTestEntry enet_test_entries[MAX_TESTS];
+extern int enet_test_count;
+#endif
 
 #ifdef _WIN32
 #define ASSERT_SLEEP(ms) Sleep(ms)
