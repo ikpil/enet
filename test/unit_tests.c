@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define ENET_UNIT_IMPL
+#define ENET_UNIT_IMPLEMENTATION 1
 
 #include "enet.h"
 #include "units/enet_unit.h"

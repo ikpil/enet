@@ -21,7 +21,7 @@ typedef struct _ENetTestEntry {
 
 #define MAX_TESTS 8096
 
-#ifdef ENET_UNIT_IMPL
+#ifdef ENET_UNIT_IMPLEMENTATION
 ENetTestEntry enet_test_entries[MAX_TESTS];
 int enet_test_count = 0;
 #else
